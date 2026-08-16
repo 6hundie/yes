@@ -1,0 +1,192 @@
+local cloneref   = (cloneref   or function(r) return r end)
+local Players          = cloneref(game:GetService("Players"))
+local RunService       = cloneref(game:GetService("RunService"))
+local Workspace        = cloneref(game:GetService("Workspace"))
+local UserInputService = cloneref(game:GetService("UserInputService"))
+local LocalPlayer = Players.LocalPlayer
+local Character   = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
+local Camera      = cloneref(Workspace.CurrentCamera)
+local currentGunPoint = nil
+local beamEnabled     = false
+local WEAPON_NAMES = {
+    "Revolver", "Winchester", "Rifle", "Colt",
+    "Peacemaker", "Deringer", "Derringer", "Shotgun",
+    "Gun", "Pistol", "Carbine"
+}
+local function findGunPoint()
+    if not Character then return nil end
+    for _, name in ipairs(WEAPON_NAMES) do
+        local weapon = Character:FindFirstChild(name)
+        if weapon then
+            for _, v in ipairs(weapon:GetDescendants()) do
+                if v:IsA("Attachment") and string.lower(v.Name):find("gunpoint") then
+                    return v
+                end
+            end
+        end
+    end
+    for _, obj in ipairs(Character:GetChildren()) do
+        if obj:IsA("Tool") then
+            for _, v in ipairs(obj:GetDescendants()) do
+                if v:IsA("Attachment") and string.lower(v.Name):find("gunpoint") then
+                    return v
+                end
+            end
+        end
+    end
+    local bp = LocalPlayer:FindFirstChild("Backpack")
+    if bp then
+        for _, tool in ipairs(bp:GetChildren()) do
+            if tool:IsA("Tool") then
+                for _, v in ipairs(tool:GetDescendants()) do
+                    if v:IsA("Attachment") and string.lower(v.Name):find("gunpoint") then
+                        return v
+                    end
+                end
+            end
+        end
+    end
+    return nil
+end
+local function updateWeapon()
+    local newGP = findGunPoint()
+    if newGP and newGP ~= currentGunPoint then
+        currentGunPoint = newGP
+    end
+end
+updateWeapon()
+task.spawn(function()
+    while task.wait(2) do
+        pcall(updateWeapon)
+    end
+end)
+Character.ChildAdded:Connect(function(child)
+    if child:IsA("Tool") or child:IsA("Model") then
+        task.wait(0.1)
+        pcall(updateWeapon)
+    end
+end)
+local DEFAULT_COLOR = Color3.fromRGB(255, 220, 0)
+local function newLine(thickness, alpha)
+    local l = Drawing.new("Line")
+    l.Thickness    = thickness
+    l.Transparency = alpha
+    l.Color        = DEFAULT_COLOR
+    l.Visible      = false
+    return l
+end
+local function newCircle(radius, alpha)
+    local c = Drawing.new("Circle")
+    c.Radius       = radius
+    c.Filled       = true
+    c.NumSides     = 64
+    c.Thickness    = 1
+    c.Transparency = alpha
+    c.Color        = DEFAULT_COLOR
+    c.Visible      = false
+    return c
+end
+local beamLayers = {
+    newLine(10,  0.12),
+    newLine(5,   0.35),
+    newLine(2,   0.70),
+    newLine(0.8, 1),
+}
+local dotLayers = {
+    newCircle(7,   0.12),
+    newCircle(4,   0.40),
+    newCircle(2.5, 0.75),
+    newCircle(1,   1),
+}
+local rayParams = RaycastParams.new()
+rayParams.FilterType = Enum.RaycastFilterType.Exclude
+rayParams.FilterDescendantsInstances = { Character }
+rayParams.RespectCanCollide = true
+local function isPlayer(instance)
+    if not instance then return false end
+    local model = instance:FindFirstAncestorOfClass("Model")
+    if not model or model == Character then return false end
+    return model:FindFirstChild("Humanoid") ~= nil
+end
+local function worldToScreen(pos)
+    local vp, onScreen = Camera:WorldToViewportPoint(pos)
+    return Vector2.new(vp.X, vp.Y), onScreen, vp.Z
+end
+local function setAllVisible(beamVis, dotVis)
+    for _, l in ipairs(beamLayers) do l.Visible = beamVis end
+    for _, c in ipairs(dotLayers)  do c.Visible = dotVis  end
+end
+local function setAllColor(colour)
+    for _, l in ipairs(beamLayers) do l.Color = colour end
+    for _, c in ipairs(dotLayers)  do c.Color = colour end
+end
+RunService.RenderStepped:Connect(function()
+    local ok = pcall(function()
+        if not beamEnabled or not Character or not Character.Parent or not currentGunPoint then
+            setAllVisible(false, false)
+            return
+        end
+        if not currentGunPoint.Parent then
+            currentGunPoint = nil
+            setAllVisible(false, false)
+            task.spawn(pcall, updateWeapon)
+            return
+        end
+        local firePos   = currentGunPoint.WorldPosition
+        local fireDir   = currentGunPoint.WorldCFrame.LookVector
+        local hit       = Workspace:Raycast(firePos, fireDir * 5000, rayParams)
+        local targetPos = hit and hit.Position or (firePos + fireDir * 5000)
+        local screenStart, _, startDepth = worldToScreen(firePos)
+        local screenEnd,   endOnScreen   = worldToScreen(targetPos)
+        if startDepth <= 0 then
+            setAllVisible(false, false)
+            return
+        end
+        local colour
+        if hit and hit.Instance and isPlayer(hit.Instance) then
+            colour = Color3.fromRGB(0, 255, 0)
+        elseif hit and hit.Instance then
+            colour = Color3.fromRGB(255, 50, 50)
+        else
+            colour = Color3.fromRGB(255, 220, 0)
+        end
+        setAllColor(colour)
+        for _, l in ipairs(beamLayers) do
+            l.From    = screenStart
+            l.To      = screenEnd
+            l.Visible = true
+        end
+        for _, c in ipairs(dotLayers) do
+            c.Position = screenEnd
+            c.Visible  = endOnScreen
+        end
+    end)
+    if not ok then
+        pcall(setAllVisible, false, false)
+    end
+end)
+LocalPlayer.CharacterAdded:Connect(function(newChar)
+    Character       = newChar
+    beamEnabled     = false
+    currentGunPoint = nil
+    setAllVisible(false, false)
+    task.wait(0.5)
+    rayParams.FilterDescendantsInstances = { Character }
+    Camera = cloneref(Workspace.CurrentCamera)
+    updateWeapon()
+    newChar.ChildAdded:Connect(function(child)
+        if child:IsA("Tool") or child:IsA("Model") then
+            task.wait(0.1)
+            pcall(updateWeapon)
+        end
+    end)
+end)
+UserInputService.InputBegan:Connect(function(input, processed)
+    if processed then return end
+    if input.KeyCode == Enum.KeyCode.V then
+        beamEnabled = not beamEnabled
+        if not beamEnabled then
+            setAllVisible(false, false)
+        end
+    end
+end)
