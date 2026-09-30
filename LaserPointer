@@ -1,12 +1,1271 @@
---[[
- .____                  ________ ___.    _____                           __                
- |    |    __ _______   \_____  \\_ |___/ ____\_ __  ______ ____ _____ _/  |_  ___________ 
- |    |   |  |  \__  \   /   |   \| __ \   __\  |  \/  ___// ___\\__  \\   __\/  _ \_  __ \
- |    |___|  |  // __ \_/    |    \ \_\ \  | |  |  /\___ \\  \___ / __ \|  | (  <_> )  | \/
- |_______ \____/(____  /\_______  /___  /__| |____//____  >\___  >____  /__|  \____/|__|   
-         \/          \/         \/    \/                \/     \/     \/                   
-          \_Welcome to LuaObfuscator.com   (Alpha 0.10.9) ~  Much Love, Ferib 
+-- ============================================================
+--   XZ'S TUFF QUICKDRAW SCRIPT
+--   B — Silent Aim, H — FOV, F — Head/Body
+--   X — Laser, C — Crosshair, V — Winchester Triggerbot
+--   CAPS — Wallhack, END — Self-Destruct
+-- ============================================================
 
-]]--
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local Workspace = game:GetService("Workspace")
+local UserInput = game:GetService("UserInputService")
+local CoreGui = game:GetService("CoreGui")
+local VirtualInput = game:GetService("VirtualInputManager")
+local TweenService = game:GetService("TweenService")
 
-local v0=cloneref or function(v175) return v175;end ;local v1=v0(game:GetService("Players"));local v2=v0(game:GetService("RunService"));local v3=v0(game:GetService("Workspace"));local v4=v0(game:GetService("UserInputService"));local v5=v0(game:GetService("CoreGui"));local v6=v0(game:GetService("VirtualInputManager"));local v7=game:GetService("Workspace");local v8=game:GetService("Players");local v9=v7.CurrentCamera;local v10=v1.LocalPlayer;local v11=v10.Character or v10.CharacterAdded:Wait() ;local v12=v0(v3.CurrentCamera);local v13=game.PlaceId~=15561786880 ;local v14= not v13;local v15=false;pcall(function() v15=v4.TouchEnabled and  not v4.MouseEnabled ;end);local v16=false;local v17=false;local v18=false;local v19=false;local v20=true;local v21=70;local v22=Color3.fromRGB(369 -(4 + 110) ,839 -(57 + 527) ,255);local v23="Head";local v24={"Head","HumanoidRootPart"};local v25={Head="HEAD",HumanoidRootPart="BODY"};local v26=1;local v27=100;local v28=false;local v29=false;local v30=false;local v31=false;local v32=false;local v33=false;pcall(function() if (Drawing and Drawing.new) then local v308=Drawing.new("Line");if v308 then local v361=0;while true do if (v361==0) then v28=true;v308:Remove();break;end end end end end);pcall(function() v29=hookfunction~=nil ;end);pcall(function() v30=hookmetamethod~=nil ;end);pcall(function() v31=checkcaller~=nil ;end);pcall(function() v32=newcclosure~=nil ;end);pcall(function() v33=replaceclosure~=nil ;end);local v34=v13 and v31 and v32 and (v30 or v29 or v33) ;local v35=0.1;local v36=0.075;local v37=0.1 + 0 ;local v38=0 -0 ;local v39=nil;local v40={"Revolver","Winchester","Rifle","Colt","Peacemaker","Deringer","Derringer","Shotgun","Gun","Pistol","Carbine"};local v41=nil;local function v42() if  not v11 then return nil;end for v235,v236 in ipairs(v40) do local v237=v11:FindFirstChild(v236);if v237 then for v362,v363 in ipairs(v237:GetDescendants()) do if (v363:IsA("Attachment") and string.lower(v363.Name):find("gunpoint")) then return v363;end end end end for v238,v239 in ipairs(v11:GetChildren()) do if v239:IsA("Tool") then for v364,v365 in ipairs(v239:GetDescendants()) do if (v365:IsA("Attachment") and string.lower(v365.Name):find("gunpoint")) then return v365;end end end end local v176=v10:FindFirstChild("Backpack");if v176 then for v327,v328 in ipairs(v176:GetChildren()) do if v328:IsA("Tool") then for v457,v458 in ipairs(v328:GetDescendants()) do if (v458:IsA("Attachment") and string.lower(v458.Name):find("gunpoint")) then return v458;end end end end end return nil;end local function v43() local v177=v42();if (v177 and (v177~=v41)) then v41=v177;end end if v14 then v43();task.spawn(function() while task.wait(2) do pcall(v43);end end);v11.ChildAdded:Connect(function(v309) if (v309:IsA("Tool") or v309:IsA("Model")) then task.wait(65.1 -(30 + 35) );pcall(v43);end end);end local v44=Color3.fromRGB(176 + 79 ,1477 -(1043 + 214) ,0 -0 );local v45={};local v46={};if (v28 and v14) then pcall(function() local v310=1212 -(323 + 889) ;local v311;local v312;while true do if (v310==0) then v311=nil;function v311(v459,v460) local v461=0;local v462;while true do if (v461==(5 -3)) then v462.Visible=false;return v462;end if (v461==(581 -(361 + 219))) then v462.Transparency=v460;v462.Color=v44;v461=322 -(53 + 267) ;end if (v461==0) then v462=Drawing.new("Line");v462.Thickness=v459;v461=1 + 0 ;end end end v310=1;end if (v310==(414 -(15 + 398))) then v312=nil;function v312(v463,v464) local v465=982 -(18 + 964) ;local v466;while true do if (v465==(14 -10)) then return v466;end if (v465==2) then v466.Thickness=1 + 0 ;v466.Transparency=v464;v465=3;end if ((1 + 0)==v465) then v466.Filled=true;v466.NumSides=64;v465=2;end if (v465==(850 -(20 + 830))) then v466=Drawing.new("Circle");v466.Radius=v463;v465=1 + 0 ;end if (v465==(129 -(116 + 10))) then v466.Color=v44;v466.Visible=false;v465=4;end end end v310=1 + 1 ;end if (v310==2) then v45={v311(21 -11 ,0.12 + 0 ),v311(2 + 3 ,0.35 -0 ),v311(2,0.7 -0 ),v311(1551.8 -(1126 + 425) ,406 -(118 + 287) )};v46={v312(1128 -(118 + 1003) ,0.12),v312(4,377.4 -(142 + 235) ),v312(2.5,0.75 -0 ),v312(1,1)};break;end end end);end local v47=nil;if (v28 and v13 and v34) then pcall(function() v47=Drawing.new("Circle");v47.Thickness=1 + 0 ;v47.NumSides=100;v47.Radius=v21;v47.Filled=false;v47.Visible=false;v47.ZIndex=1976 -(553 + 424) ;v47.Transparency=1;v47.Color=v22;end);end local function v48(v178,v179) for v240,v241 in ipairs(v45) do v241.Visible=v178;end for v243,v244 in ipairs(v46) do v244.Visible=v179;end end local function v49(v180) local v181=0 -0 ;while true do if (v181==(0 + 0)) then for v366,v367 in ipairs(v45) do v367.Color=v180;end for v369,v370 in ipairs(v46) do v370.Color=v180;end break;end end end local v50=RaycastParams.new();pcall(function() v50.FilterType=Enum.RaycastFilterType.Exclude;end);if v11 then v50.FilterDescendantsInstances={v11};end v50.RespectCanCollide=true;local function v52(v184) local v185=0;local v186;while true do if (v185==(0 + 0)) then if  not v184 then return nil;end v186=v184;v185=1 + 0 ;end if (v185==1) then while v186 and (v186~=v3) and (v186~=game)  do local v372=0;while true do if (v372==(0 + 0)) then if v186:IsA("Model") then if (v186~=v11) then if (v186:FindFirstChildOfClass("Humanoid") or v1:GetPlayerFromCharacter(v186)) then return v186;end else return nil;end end v186=v186.Parent;break;end end end return nil;end end end local function v53(v187) local v188=0;local v189;while true do if (v188==2) then return false;end if (v188==0) then if  not v187 then return false;end for v373,v374 in ipairs(v187:GetChildren()) do local v375=0;local v376;while true do if (v375==(0 + 0)) then if v374:IsA("ForceField") then return true;end v376=string.lower(v374.Name);v375=1;end if (v375==(2 -1)) then if (v376:find("spawnprotection") or v376:find("spawnprotectiontime") or v376:find("spawnarmor")) then return true;end if (v374:IsA("BoolValue") or v374:IsA("IntValue") or v374:IsA("NumberValue")) then if v376:find("spawnprotection") then return true;end end break;end end end v188=1;end if (v188==1) then v189=v187:GetAttributes();for v377,v378 in pairs(v189) do local v379=0;local v380;while true do if ((0 -0)==v379) then v380=string.lower(v377);if (v380:find("spawnprotection") or v380:find("spawnprotectiontime")) then return true;end break;end end end v188=2;end end end local function v54(v190) local v191,v192=v12:WorldToViewportPoint(v190);return Vector2.new(v191.X,v191.Y),v192,v191.Z;end local function v55() if v15 then local v321=0 -0 ;local v322;while true do if ((0 + 0)==v321) then v322=v12.ViewportSize;return Vector2.new(v322.X/(9 -7) ,v322.Y/(755 -(239 + 514)) );end end else return v4:GetMouseLocation();end end local v56=nil;local v57=0 + 0 ;local v58=false;local v59=nil;local function v60() if ( not v34 or v58) then return false;end local v193={Raycast={ArgCountRequired=1332 -(797 + 532) ,Args={"Instance","Vector3","Vector3","RaycastParams"}}};local function v194(v247) local v248=0;local v249;while true do if (v248==0) then v247=math.floor(v247);v249=math.floor(Random.new().NextNumber(Random.new(),0,2 -1 ) * 100 )/(1302 -(373 + 829)) ;v248=732 -(476 + 255) ;end if (v248==1) then return v249<=(v247/100) ;end end end local function v195(v250,v251) local v252=1130 -(369 + 761) ;local v253;while true do if (v252==(0 + 0)) then v253=0 -0 ;if ( #v250<v251.ArgCountRequired) then return false;end v252=1 -0 ;end if (v252==(239 -(64 + 174))) then for v443,v444 in next,v250 do if (typeof(v444)==v251.Args[v443]) then v253=v253 + 1 + 0 ;end end return v253>=v251.ArgCountRequired ;end end end local function v196(v254,v255) return (v255-v254).Unit * 1000 ;end local v197=false;if v30 then v197=pcall(function() v59=hookmetamethod(game,"__namecall",newcclosure(function(...) local v381={...};local v382=v381[337 -(144 + 192) ];local v383=getnamecallmethod();local v384=v194(v27);if (v19 and  not checkcaller() and (v382==v7) and v384 and (v383=="Raycast") and v56) then if v195(v381,v193.Raycast) then local v498=216 -(42 + 174) ;local v499;while true do if (v498==(0 + 0)) then v499=v381[2 + 0 ];v381[3]=v196(v499,v56.Position);v498=1 + 0 ;end if (v498==(1505 -(363 + 1141))) then return v59(unpack(v381));end end end end return v59(...);end));end);end if ( not v197 and v29) then v197=pcall(function() local v329=0;local v330;while true do if (v329==(1581 -(1183 + 397))) then hookfunction(v3,"Raycast",v330);break;end if (v329==(0 -0)) then v59=v3.Raycast;v330=newcclosure(function(v473,v474,v475,v476) if (v19 and  not checkcaller() and (v473==v7) and v56) then if v195({v473,v474,v475,v476},v193.Raycast) then return v59(v473,v474,v196(v474,v56.Position),v476);end end return v59(v473,v474,v475,v476);end);v329=1 + 0 ;end end end);end if ( not v197 and v33) then v197=pcall(function() v59=v3.Raycast;local v332=newcclosure(function(v385,v386,v387,v388) local v389=0 -0 ;while true do if (v389==(1933 -(565 + 1368))) then if (v19 and  not checkcaller() and (v385==v7) and v56) then if v195({v385,v386,v387,v388},v193.Raycast) then return v59(v385,v386,v196(v386,v56.Position),v388);end end return v59(v385,v386,v387,v388);end end end);replaceclosure(v3.Raycast,v332);end);end if  not v197 then return false;end v58=true;return true;end local function v61() local v198=0 -0 ;local v199;local v200;local v201;local v202;while true do if (v198==(0 + 0)) then if  not v19 then local v445=856 -(564 + 292) ;while true do if (v445==0) then v56=nil;return;end end end v199=os.clock();v198=1;end if (v198==(4 -1)) then v202=nil;for v390,v391 in ipairs(v8:GetPlayers()) do local v392=0;local v393;local v394;local v395;local v396;local v397;local v398;while true do if (v392==(8 -5)) then v398=(Vector2.new(v396.X,v396.Y) -v200).Magnitude;if (v398<=v201) then local v513=304 -(244 + 60) ;while true do if (v513==(0 + 0)) then v201=v398;v202=v395;break;end end end break;end if (v392==(476 -(41 + 435))) then if (v391==v10) then continue;end v393=v391.Character;if  not v393 then continue;end v392=1;end if ((1002 -(938 + 63))==v392) then v394=v393:FindFirstChildOfClass("Humanoid");if ( not v394 or (v394.Health<=0)) then continue;end v395=v393:FindFirstChild(v23) or v393:FindFirstChild("HumanoidRootPart") ;v392=2 + 0 ;end if ((1127 -(936 + 189))==v392) then if  not v395 then continue;end v396,v397=v9:WorldToViewportPoint(v395.Position);if  not v397 then continue;end v392=1 + 2 ;end end end v198=1617 -(1565 + 48) ;end if (v198==(2 + 0)) then v200=v55();v201=v21;v198=1141 -(782 + 356) ;end if (v198==4) then v56=v202;break;end if (v198==1) then if ((v199-v57)<(267.1 -(176 + 91))) then return;end v57=v199;v198=4 -2 ;end end end local function v62() local v203,v204=pcall(function() return (gethui and gethui()) or v5 ;end);if (v203 and v204) then return v204;end return v10:FindFirstChildOfClass("PlayerGui") or v10:WaitForChild("PlayerGui") ;end local v63=Instance.new("ScreenGui");v63.Name="WeaponOverlayGui";v63.ResetOnSpawn=false;v63.DisplayOrder=147379 -47380 ;v63.IgnoreGuiInset=true;v63.Parent=v62();local v69=Instance.new("Frame");v69.Name="Crosshair";v69.Size=UDim2.new(1092 -(975 + 117) ,1875 -(157 + 1718) ,0 + 0 ,0);v69.BackgroundTransparency=3 -2 ;v69.Visible=false;v69.ZIndex=500;v69.Parent=v63;local v76={};local function v77(v205,v206,v207,v208) local v209=0 -0 ;local v210;local v211;while true do if (v209==(1019 -(697 + 321))) then v210.BackgroundColor3=Color3.fromRGB(0,0,0 -0 );v210.BorderSizePixel=0 -0 ;v210.ZIndex=1154 -653 ;v209=1 + 1 ;end if (v209==(0 -0)) then v210=Instance.new("Frame");v210.Size=UDim2.new(0,v207 + (5 -3) ,0,v208 + 2 );v210.Position=UDim2.new(0,v205-1 ,1227 -(322 + 905) ,v206-(612 -(602 + 9)) );v209=1190 -(449 + 740) ;end if (v209==(875 -(826 + 46))) then v211.Position=UDim2.new(947 -(245 + 702) ,v205,0 -0 ,v206);v211.BackgroundColor3=v44;v211.BorderSizePixel=0 + 0 ;v209=1902 -(260 + 1638) ;end if (v209==(444 -(382 + 58))) then v211.ZIndex=1610 -1108 ;v211.Parent=v69;table.insert(v76,v211);break;end if ((2 + 0)==v209) then v210.Parent=v69;v211=Instance.new("Frame");v211.Size=UDim2.new(0 -0 ,v207,0 -0 ,v208);v209=3;end end end if v14 then local v256=0;while true do if (v256==0) then v77( -(1206 -(902 + 303)), -8,3 -1 ,16);v77( -(19 -11), -(1 + 0),1706 -(1121 + 569) ,216 -(22 + 192) );break;end end end local function v78(v212) for v257,v258 in ipairs(v76) do v258.BackgroundColor3=v212;end end local function v79() v48(false,false);v69.Visible=false;end local v80=(v14 and (943 -(483 + 200))) or (1653 -(1404 + 59)) ;local v81=(v14 and 90) or (410 -260) ;local v82=false;local v83=Instance.new("Frame");v83.Name="OverlayPanel";v83.Size=UDim2.new(0,v80,0 -0 ,v81);v83.AnchorPoint=Vector2.new(1,765 -(468 + 297) );v83.Position=UDim2.new(563 -(334 + 228) , -(50 -35),0,104 -59 );v83.BackgroundColor3=Color3.fromRGB(20,20,50 -22 );v83.BackgroundTransparency=0.2;v83.Active=true;v83.Parent=v63;local v92=Instance.new("UICorner");v92.CornerRadius=UDim.new(0,12);v92.Parent=v83;local v95=Instance.new("UIStroke");v95.Thickness=1 + 0 ;v95.Color=Color3.fromRGB(306 -(141 + 95) ,70,85);v95.Parent=v83;local v99=Instance.new("TextLabel");v99.Size=UDim2.new(1 + 0 , -(128 -78),0 -0 ,5 + 15 );v99.Position=UDim2.new(0 -0 ,0,0 + 0 ,3);v99.BackgroundTransparency=1 + 0 ;v99.Text=(v14 and "XZ'S QUICKDRAW SCRIPT") or "XZ' SILENT AIM" ;v99.TextColor3=Color3.fromRGB(220,309 -89 ,136 + 94 );v99.Font=Enum.Font.GothamBold;v99.TextSize=176 -(92 + 71) ;v99.Parent=v83;local v109=Instance.new("Frame");v109.Size=UDim2.new(1, -(10 + 10),0,1 -0 );v109.Position=UDim2.new(765 -(574 + 191) ,10,0,19 + 3 );v109.BackgroundColor3=Color3.fromRGB(175 -105 ,36 + 34 ,934 -(254 + 595) );v109.BorderSizePixel=126 -(55 + 71) ;v109.Parent=v83;local v115=Instance.new("TextButton");v115.Name="MinimizeBtn";v115.Size=UDim2.new(0 -0 ,1820 -(573 + 1217) ,0,49 -31 );v115.Position=UDim2.new(1, -(4 + 36),0 -0 ,2);v115.BackgroundColor3=Color3.fromRGB(35,974 -(714 + 225) ,131 -86 );v115.BorderSizePixel=0 -0 ;v115.Text="–";v115.TextColor3=Color3.fromRGB(24 + 196 ,318 -98 ,1036 -(118 + 688) );v115.Font=Enum.Font.GothamBold;v115.TextSize=62 -(25 + 23) ;v115.AutoButtonColor=false;v115.Parent=v83;local v127=Instance.new("UICorner");v127.CornerRadius=UDim.new(0 + 0 ,1892 -(927 + 959) );v127.Parent=v115;local v130=Instance.new("UIStroke");v130.Thickness=1;v130.Color=Color3.fromRGB(337 -237 ,832 -(16 + 716) ,231 -111 );v130.Parent=v115;local function v134(v214,v215,v216) local v217=0;while true do if ((99 -(11 + 86))==v217) then v216.Thickness=2.5 -1 ;v216.Color=Color3.fromRGB(385 -(175 + 110) ,252 -152 ,591 -471 );v216.ApplyStrokeMode=Enum.ApplyStrokeMode.Border;v214.MouseEnter:Connect(function() local v399=1796 -(503 + 1293) ;while true do if (v399==(0 -0)) then if (v214.BackgroundColor3==Color3.fromRGB(15 + 5 ,1111 -(810 + 251) ,21 + 9 )) then return;end v214.BackgroundColor3=Color3.fromRGB(14 + 31 ,41 + 4 ,55);break;end end end);v217=536 -(43 + 490) ;end if (v217==(736 -(711 + 22))) then v214.MouseLeave:Connect(function() local v400=0 -0 ;while true do if ((859 -(240 + 619))==v400) then if (v214.BackgroundColor3==Color3.fromRGB(5 + 15 ,79 -29 ,2 + 28 )) then return;end v214.BackgroundColor3=Color3.fromRGB(35,35,1789 -(1344 + 400) );break;end end end);break;end if ((406 -(255 + 150))==v217) then v214.Font=Enum.Font.GothamBold;v214.TextSize=7 + 1 ;v214.AutoButtonColor=false;v215.CornerRadius=UDim.new(0 + 0 ,8);v217=8 -6 ;end if (v217==(0 -0)) then v214.BackgroundColor3=Color3.fromRGB(1774 -(404 + 1335) ,35,451 -(183 + 223) );v214.BackgroundTransparency=0.1 -0 ;v214.BorderSizePixel=0 + 0 ;v214.TextColor3=Color3.fromRGB(72 + 128 ,537 -(10 + 327) ,147 + 63 );v217=1;end end end local v135,v136,v137,v138,v139,v140,v141,v142;local v143,v144,v145,v146,v147,v148,v149,v150,v151,v152,v153,v154;local v155,v156,v157,v158;local v159;local v160={};if v14 then local v260=338 -(118 + 220) ;while true do if ((1 + 0)==v260) then v143.Parent=v135;v144=Instance.new("UIStroke");v144.Parent=v135;v134(v135,v143,v144);v136=Instance.new("TextButton");v136.Name="CrosshairBtn";v260=2;end if (3==v260) then v146.Parent=v136;v134(v136,v145,v146);v137=Instance.new("TextButton");v137.Name="TriggerbotBtn";v137.Size=UDim2.new(449.28 -(108 + 341) ,0 + 0 ,0,42);v137.Position=UDim2.new(0.65 -0 ,1493 -(711 + 782) ,0 -0 ,503 -(270 + 199) );v260=2 + 2 ;end if (0==v260) then v135=Instance.new("TextButton");v135.Name="LaserBtn";v135.Size=UDim2.new(1819.28 -(580 + 1239) ,0,0 -0 ,41 + 1 );v135.Position=UDim2.new(0.03 + 0 ,0 + 0 ,0 -0 ,22 + 12 );v135.Parent=v83;v143=Instance.new("UICorner");v260=1168 -(645 + 522) ;end if ((1792 -(1010 + 780))==v260) then v136.Size=UDim2.new(0.28,0 + 0 ,0 -0 ,123 -81 );v136.Position=UDim2.new(0.34,1836 -(1045 + 791) ,0,85 -51 );v136.Parent=v83;v145=Instance.new("UICorner");v145.Parent=v136;v146=Instance.new("UIStroke");v260=4 -1 ;end if (v260==(510 -(351 + 154))) then v137.TextSize=1580 -(1281 + 293) ;v135.Text="LASER\n[X] OFF";v136.Text="CROSS\n[C] OFF";v137.Text="WINCHESTER\nTRIGGERBOT [V] OFF";table.insert(v160,v135);table.insert(v160,v136);v260=272 -(28 + 238) ;end if (v260==6) then table.insert(v160,v137);break;end if (v260==(8 -4)) then v137.Parent=v83;v147=Instance.new("UICorner");v147.Parent=v137;v148=Instance.new("UIStroke");v148.Parent=v137;v134(v137,v147,v148);v260=5;end end else v138=Instance.new("TextButton");v138.Name="SilentAimBtn";v138.Size=UDim2.new(0.92,1559 -(1381 + 178) ,0 + 0 ,30 + 6 );v138.Position=UDim2.new(0.04 + 0 ,0 -0 ,0,17 + 15 );v138.Parent=v83;v149=Instance.new("UICorner");v149.Parent=v138;v150=Instance.new("UIStroke");v150.Parent=v138;v134(v138,v149,v150);v139=Instance.new("TextButton");v139.Name="FovBtn";v139.Size=UDim2.new(470.45 -(381 + 89) ,0 + 0 ,0 + 0 ,47 -19 );v139.Position=UDim2.new(1156.04 -(1074 + 82) ,0 -0 ,1784 -(214 + 1570) ,74);v139.Parent=v83;v151=Instance.new("UICorner");v151.Parent=v139;v152=Instance.new("UIStroke");v152.Parent=v139;v134(v139,v151,v152);v140=Instance.new("TextButton");v140.Name="TargetBtn";v140.Size=UDim2.new(0.45,0,0,1483 -(990 + 465) );v140.Position=UDim2.new(0.51 + 0 ,0 + 0 ,0,72 + 2 );v140.Parent=v83;v153=Instance.new("UICorner");v153.Parent=v140;v154=Instance.new("UIStroke");v154.Parent=v140;v134(v140,v153,v154);v141=Instance.new("TextButton");v141.Name="FovMinusBtn";v141.Size=UDim2.new(0.2,0,0,94 -70 );v141.Position=UDim2.new(1726.1 -(1668 + 58) ,0,626 -(512 + 114) ,110);v141.Parent=v83;v155=Instance.new("UICorner");v155.Parent=v141;v156=Instance.new("UIStroke");v156.Parent=v141;v134(v141,v155,v156);v159=Instance.new("TextLabel");v159.Name="FovValueLabel";v159.Size=UDim2.new(0.4,0,0,62 -38 );v159.Position=UDim2.new(0.35,0,0 -0 ,110);v159.BackgroundTransparency=1;v159.Text=tostring(v21);v159.TextColor3=Color3.fromRGB(220,220,230);v159.Font=Enum.Font.GothamBold;v159.TextSize=48 -34 ;v159.Parent=v83;v142=Instance.new("TextButton");v142.Name="FovPlusBtn";v142.Size=UDim2.new(0.2 + 0 ,0 + 0 ,0 + 0 ,80 -56 );v142.Position=UDim2.new(1994.75 -(109 + 1885) ,1469 -(1269 + 200) ,0 -0 ,925 -(98 + 717) );v142.Parent=v83;v157=Instance.new("UICorner");v157.Parent=v142;v158=Instance.new("UIStroke");v158.Parent=v142;v134(v142,v157,v158);v141.Text="-";v142.Text="+";v138.Text="SILENT [B]\nOFF";v139.Text="FOV [F]\nON";v140.Text="TARGET\n"   .. v25[v23] ;table.insert(v160,v138);table.insert(v160,v139);table.insert(v160,v140);table.insert(v160,v141);table.insert(v160,v159);table.insert(v160,v142);end table.insert(v160,v109);local function v161() local v218=826 -(802 + 24) ;while true do if (v218==(5 -2)) then if v159 then v159.Text=tostring(v21);end break;end if (v218==(0 -0)) then if v135 then if v16 then local v481=0 + 0 ;while true do if (1==v481) then v144.Color=Color3.fromRGB(75,196 + 59 ,130);break;end if (v481==(0 + 0)) then v135.Text="LASER\n[X] ON";v135.BackgroundColor3=Color3.fromRGB(5 + 15 ,50,30);v481=2 -1 ;end end else local v482=0 -0 ;while true do if (0==v482) then v135.Text="LASER\n[X] OFF";v135.BackgroundColor3=Color3.fromRGB(13 + 22 ,15 + 20 ,38 + 7 );v482=1 + 0 ;end if ((1 + 0)==v482) then v144.Color=Color3.fromRGB(100,100,1553 -(797 + 636) );break;end end end end if v136 then if v17 then local v483=0 -0 ;while true do if (1==v483) then v146.Color=Color3.fromRGB(75,1874 -(1427 + 192) ,130);break;end if (v483==(0 + 0)) then v136.Text="CROSS\n[C] ON";v136.BackgroundColor3=Color3.fromRGB(46 -26 ,45 + 5 ,14 + 16 );v483=1;end end else local v484=0;while true do if (v484==0) then v136.Text="CROSS\n[C] OFF";v136.BackgroundColor3=Color3.fromRGB(35,361 -(192 + 134) ,1321 -(316 + 960) );v484=1 + 0 ;end if (v484==1) then v146.Color=Color3.fromRGB(100,78 + 22 ,120);break;end end end end v218=1;end if (v218==2) then if v139 then if v20 then local v485=0 + 0 ;while true do if (v485==(3 -2)) then v152.Color=Color3.fromRGB(626 -(83 + 468) ,255,130);break;end if (v485==(1806 -(1202 + 604))) then v139.Text="FOV [F]\nON";v139.BackgroundColor3=Color3.fromRGB(93 -73 ,83 -33 ,83 -53 );v485=1;end end else local v486=325 -(45 + 280) ;while true do if (v486==(0 + 0)) then v139.Text="FOV [F]\nOFF";v139.BackgroundColor3=Color3.fromRGB(31 + 4 ,13 + 22 ,45);v486=1;end if (v486==1) then v152.Color=Color3.fromRGB(56 + 44 ,100,120);break;end end end end if v140 then v140.Text="TARGET\n"   .. v25[v23] ;end v218=1 + 2 ;end if (v218==(1 -0)) then if v137 then if v18 then local v487=0;while true do if (v487==0) then v137.Text="WINCHESTER\nTRIGGERBOT [V] ON";v137.BackgroundColor3=Color3.fromRGB(20,1961 -(340 + 1571) ,12 + 18 );v487=1773 -(1733 + 39) ;end if (v487==(2 -1)) then v148.Color=Color3.fromRGB(1109 -(125 + 909) ,2203 -(1096 + 852) ,130);break;end end else v137.Text="WINCHESTER\nTRIGGERBOT [V] OFF";v137.BackgroundColor3=Color3.fromRGB(16 + 19 ,49 -14 ,44 + 1 );v148.Color=Color3.fromRGB(612 -(409 + 103) ,336 -(46 + 190) ,215 -(51 + 44) );end end if v138 then if v19 then local v491=0 + 0 ;while true do if (v491==(1318 -(1114 + 203))) then v150.Color=Color3.fromRGB(801 -(228 + 498) ,56 + 199 ,130);break;end if (v491==0) then v138.Text="SILENT [B]\nON";v138.BackgroundColor3=Color3.fromRGB(12 + 8 ,713 -(174 + 489) ,30);v491=1;end end else v138.Text=(v34 and "SILENT [B]\nOFF") or "SILENT [B]\nNA" ;v138.BackgroundColor3=Color3.fromRGB(91 -56 ,1940 -(830 + 1075) ,569 -(303 + 221) );v150.Color=Color3.fromRGB(1369 -(231 + 1038) ,84 + 16 ,1282 -(171 + 991) );end end v218=8 -6 ;end end end v161();local function v162() if  not v14 then return;end v16= not v16;if  not v16 then v48(false,false);end v161();end local function v163() local v219=0 -0 ;while true do if (v219==0) then if  not v14 then return;end v17= not v17;v219=2 -1 ;end if (v219==1) then if  not v17 then v69.Visible=false;end v161();break;end end end local function v164() if  not v14 then return;end v18= not v18;v161();end local function v165() local v220=0 + 0 ;while true do if (v220==0) then if  not v13 then return;end v20= not v20;v220=3 -2 ;end if (v220==(2 -1)) then v161();break;end end end local function v166() local v221=0;while true do if ((1 -0)==v221) then v161();break;end if (v221==(0 -0)) then if ( not v13 or  not v34) then local v449=1248 -(111 + 1137) ;while true do if (v449==0) then v161();return;end end end if  not v19 then if  not v58 then if  not v60() then v34=false;v19=false;v161();return;end end v19=true;else v19=false;end v221=1;end end end local function v167() local v222=158 -(91 + 67) ;while true do if (v222==1) then v161();break;end if (v222==0) then v26=(v26% #v24) + (2 -1) ;v23=v24[v26];v222=1 + 0 ;end end end local function v168() local v223=523 -(423 + 100) ;while true do if (v223==(0 + 0)) then v21=math.max(55 -35 ,v21-(3 + 2) );if v47 then v47.Radius=v21;end v223=1;end if (v223==1) then v161();break;end end end local function v169() v21=math.min(971 -(326 + 445) ,v21 + 5 );if v47 then v47.Radius=v21;end v161();end local function v170() local v224=0 -0 ;while true do if (v224==(0 -0)) then v82= not v82;if v82 then v83.Size=UDim2.new(0 -0 ,v80,0,741 -(530 + 181) );v115.Text="+";for v468,v469 in ipairs(v160) do v469.Visible=false;end else local v453=881 -(614 + 267) ;while true do if (v453==(32 -(19 + 13))) then v83.Size=UDim2.new(0 -0 ,v80,0,v81);v115.Text="–";v453=2 -1 ;end if (v453==1) then for v514,v515 in ipairs(v160) do v515.Visible=true;end break;end end end break;end end end if v135 then v135.Activated:Connect(v162);end if v136 then v136.Activated:Connect(v163);end if v137 then v137.Activated:Connect(v164);end if v138 then v138.Activated:Connect(v166);end if v139 then v139.Activated:Connect(v165);end if v140 then v140.Activated:Connect(v167);end if v141 then v141.Activated:Connect(v168);end if v142 then v142.Activated:Connect(v169);end v115.Activated:Connect(v170);local v171,v172,v173=false,nil,nil;v83.InputBegan:Connect(function(v225) if ((v225.UserInputType==Enum.UserInputType.Touch) or (v225.UserInputType==Enum.UserInputType.MouseButton1)) then local v324=0 -0 ;while true do if (v324==(0 + 0)) then v171=true;v172=v225.Position;v324=1 -0 ;end if (v324==1) then v173=v83.Position;v225.Changed:Connect(function() if (v225.UserInputState==Enum.UserInputState.End) then v171=false;end end);break;end end end end);v4.InputChanged:Connect(function(v226) if (v171 and ((v226.UserInputType==Enum.UserInputType.Touch) or (v226.UserInputType==Enum.UserInputType.MouseMovement))) then local v325=v226.Position-v172 ;v83.Position=UDim2.new(v173.X.Scale,v173.X.Offset + v325.X ,v173.Y.Scale,v173.Y.Offset + v325.Y );end end);local function v174() local v227=0;while true do if (v227==(0 -0)) then v79();v41=nil;v227=1813 -(1293 + 519) ;end if ((1 -0)==v227) then v39=nil;v161();break;end end end v10.CharacterAdded:Connect(function(v228) local v229=0;local v230;while true do if (v229==(2 -1)) then task.wait(0.5 -0 );v50.FilterDescendantsInstances={v11};v12=v0(v3.CurrentCamera);v9=v7.CurrentCamera;v229=4 -2 ;end if (v229==(0 + 0)) then v11=v228;v79();v41=nil;v39=nil;v229=1 + 0 ;end if (v229==(4 -2)) then if v14 then v43();end v161();v230=v228:WaitForChild("Humanoid",5) or v228:FindFirstChildOfClass("Humanoid") ;if v230 then v230.Died:Connect(v174);end v229=3;end if (v229==(1 + 2)) then v228.ChildAdded:Connect(function(v423) if (v423:IsA("Tool") or v423:IsA("Model")) then local v471=0 + 0 ;while true do if (v471==(0 + 0)) then task.wait(1096.1 -(709 + 387) );if v14 then pcall(v43);end break;end end end end);break;end end end);if v11 then local v306=0;local v307;while true do if (v306==0) then v307=v11:FindFirstChildOfClass("Humanoid");if v307 then v307.Died:Connect(v174);end break;end end end v2.RenderStepped:Connect(function() local v231=0;local v232;while true do if (v231==(1858 -(673 + 1185))) then v232=pcall(function() local v424=0 -0 ;local v425;local v426;local v427;local v428;local v429;local v430;local v431;local v432;local v433;local v434;local v435;local v436;local v437;local v438;local v439;local v440;local v441;while true do if (v424==(6 -4)) then v428=(v427 and v427.Position) or (v425 + (v426 * (8226 -3226))) ;v429=(v428-v425).Magnitude;v430,v431,v432=v54(v425);v424=3;end if (v424==(3 + 1)) then v436=nil;if (v427 and v427.Instance) then local v517=0 + 0 ;while true do if (v517==(0 -0)) then v436=v52(v427.Instance);if v436 then v435=Color3.fromRGB(0,255,0 + 0 );else v435=Color3.fromRGB(508 -253 ,98 -48 ,50);end break;end end else v435=Color3.fromRGB(2135 -(446 + 1434) ,1503 -(1040 + 243) ,0 -0 );end if (v17 and v434) then v69.Position=UDim2.new(1847 -(559 + 1288) ,math.floor(v433.X),0,math.floor(v433.Y));v69.Visible=true;v78(v435);else v69.Visible=false;end v424=1936 -(609 + 1322) ;end if (v424==(460 -(13 + 441))) then v438=nil;if v436 then local v521=0;local v522;local v523;while true do if (v521==(3 -2)) then if (v522 and v523) then local v571=0 -0 ;local v572;local v573;local v574;while true do if (v571==(0 -0)) then v572=v523.AssemblyLinearVelocity;if (v572.Magnitude<0.5) then v572=v522.MoveDirection * v522.WalkSpeed ;end v571=1 + 0 ;end if (v571==(7 -5)) then if (v574 and v574.Instance) then v438=v52(v574.Instance);end break;end if ((1 + 0)==v571) then v573=v428 + (v572 * v37) ;v574=v3:Raycast(v425,(v573-v425).Unit * 5000 ,v50);v571=1 + 1 ;end end end break;end if (v521==(0 -0)) then v522=v436:FindFirstChildOfClass("Humanoid");v523=v436:FindFirstChild("HumanoidRootPart") or v436:FindFirstChild("Torso") or v436:FindFirstChild("UpperTorso") ;v521=1 + 0 ;end end end v439=v438 or v436 ;v424=12 -5 ;end if (8==v424) then if (v18 and v437 and v440 and v441) then local v524=0;local v525;while true do if (v524==(1 + 0)) then if (((v525-v39)>=v36) and ((v525-v38)>=v35)) then local v575=0 + 0 ;while true do if (v575==(0 + 0)) then v38=v525;v6:SendMouseButtonEvent(0 + 0 ,0,0 + 0 ,true,game,433 -(153 + 280) );v575=2 -1 ;end if (v575==1) then task.delay(0.05 + 0 ,function() v6:SendMouseButtonEvent(0 + 0 ,0 + 0 ,0 + 0 ,false,game,0 + 0 );end);v39=nil;break;end end end break;end if (v524==(0 -0)) then if  not v39 then v39=os.clock();end v525=os.clock();v524=1 + 0 ;end end else v39=nil;end break;end if (v424==1) then v425=v41.WorldPosition;v426=v41.WorldCFrame.LookVector;v427=v3:Raycast(v425,v426 * (5667 -(89 + 578)) ,v50);v424=2 + 0 ;end if (v424==(14 -7)) then v440=false;if v439 then local v526=v439:FindFirstChildOfClass("Humanoid");local v527=v526 and (v526.Health>(1049 -(572 + 477))) ;local v528=v53(v439);v440=v527 and  not v528 ;end v441=v11:FindFirstChild("Winchester")~=nil ;v424=2 + 6 ;end if (v424==3) then v433,v434=v54(v428);if (v432<=(0 + 0)) then local v529=0 + 0 ;while true do if (v529==(86 -(84 + 2))) then v48(false,false);v69.Visible=false;v529=1;end if (v529==(1 -0)) then v39=nil;return;end end end v435=nil;v424=3 + 1 ;end if (v424==5) then if v16 then local v530=0;while true do if ((843 -(497 + 345))==v530) then for v564,v565 in ipairs(v46) do v565.Position=v433;v565.Visible=v434;end break;end if ((0 + 0)==v530) then v49(v435);for v568,v569 in ipairs(v45) do local v570=0 + 0 ;while true do if (v570==(1333 -(605 + 728))) then v569.From=v430;v569.To=v433;v570=1 + 0 ;end if (v570==(1 -0)) then v569.Visible=true;break;end end end v530=1 + 0 ;end end else v48(false,false);end v437=false;if v16 then v437=true;elseif (v17 and v434) then v437=true;end v424=6;end if (0==v424) then if v13 then local v531=0 -0 ;while true do if ((0 + 0)==v531) then if (v19 and v34) then if (v20 and v47) then v47.Position=v55();v47.Color=v22;v47.Visible=true;elseif v47 then v47.Visible=false;end v61();else local v576=0 -0 ;while true do if (0==v576) then if v47 then v47.Visible=false;end v56=nil;break;end end end return;end end end if (( not v16 and  not v17 and  not v18) or  not v11 or  not v11.Parent or  not v41) then local v532=0;while true do if (v532==(0 + 0)) then v48(false,false);v69.Visible=false;v532=490 -(457 + 32) ;end if (v532==(1 + 0)) then v39=nil;return;end end end if  not v41.Parent then local v533=1402 -(832 + 570) ;while true do if (0==v533) then v41=nil;v48(false,false);v533=1 + 0 ;end if (v533==(1 + 1)) then task.spawn(pcall,v43);return;end if (v533==1) then v69.Visible=false;v39=nil;v533=6 -4 ;end end end v424=1 + 0 ;end end end);if  not v232 then local v456=796 -(588 + 208) ;while true do if (v456==(0 -0)) then pcall(v48,false,false);if v69 then v69.Visible=false;end v456=1801 -(884 + 916) ;end if (v456==1) then v39=nil;break;end end end break;end end end);v4.InputBegan:Connect(function(v233,v234) if v234 then return;end if v14 then if (v233.KeyCode==Enum.KeyCode.X) then v162();elseif (v233.KeyCode==Enum.KeyCode.C) then v163();elseif ((v233.KeyCode==Enum.KeyCode.V) or (v233.UserInputType==Enum.UserInputType.MouseButton3)) then v164();end elseif v13 then if (v233.KeyCode==Enum.KeyCode.B) then v166();elseif (v233.KeyCode==Enum.KeyCode.F) then v165();end end end);
+local localPlayer = Players.LocalPlayer
+local character = localPlayer.Character or localPlayer.CharacterAdded:Wait()
+local camera = Workspace.CurrentCamera
+
+-- ==================== НАСТРОЙКИ ====================
+local FOV = 150
+local FOV_COLOR = Color3.fromRGB(255, 255, 255)
+local TARGET_PART = "Head"
+local TARGET_PARTS = {"Head", "HumanoidRootPart"}
+local TARGET_NAMES = {Head = "HEAD", HumanoidRootPart = "BODY"}
+local targetIndex = 1
+local hitChance = 100
+
+-- Wallhack
+local VISIBLE_COLOR = Color3.fromRGB(0, 255, 0)
+local HIDDEN_COLOR = Color3.fromRGB(255, 0, 0)
+local WALLHACK_ENABLED = true
+
+-- ==================== ФЛАГИ ====================
+local silentAimEnabled = false
+local fovCircleEnabled = true
+local laserEnabled = false
+local crosshairEnabled = false
+local triggerbotEnabled = false
+
+-- ==================== ПРОВЕРКА ФУНКЦИЙ ====================
+local hasDrawing = false
+local hasHookmetamethod = false
+local hasHookfunction = false
+local hasReplaceclosure = false
+local hasCheckcaller = false
+local hasNewcclosure = false
+
+pcall(function()
+    if Drawing and Drawing.new then
+        local test = Drawing.new("Line")
+        if test then
+            hasDrawing = true
+            test:Remove()
+        end
+    end
+end)
+pcall(function() hasHookmetamethod = hookmetamethod ~= nil end)
+pcall(function() hasHookfunction = hookfunction ~= nil end)
+pcall(function() hasReplaceclosure = replaceclosure ~= nil end)
+pcall(function() hasCheckcaller = checkcaller ~= nil end)
+pcall(function() hasNewcclosure = newcclosure ~= nil end)
+
+local canHook = hasCheckcaller and hasNewcclosure and (hasHookmetamethod or hasHookfunction or hasReplaceclosure)
+
+-- ==================== ОРУЖИЕ ====================
+local WEAPON_NAMES = {
+    "Revolver", "Winchester", "Rifle", "Colt", "Peacemaker",
+    "Deringer", "Derringer", "Shotgun", "Gun", "Pistol", "Carbine"
+}
+
+local currentGunPoint = nil
+
+local function findGunPoint()
+    if not character then return nil end
+    for _, name in ipairs(WEAPON_NAMES) do
+        local weapon = character:FindFirstChild(name)
+        if weapon then
+            for _, desc in ipairs(weapon:GetDescendants()) do
+                if desc:IsA("Attachment") and string.lower(desc.Name):find("gunpoint") then
+                    return desc
+                end
+            end
+        end
+    end
+    for _, child in ipairs(character:GetChildren()) do
+        if child:IsA("Tool") then
+            for _, desc in ipairs(child:GetDescendants()) do
+                if desc:IsA("Attachment") and string.lower(desc.Name):find("gunpoint") then
+                    return desc
+                end
+            end
+        end
+    end
+    local backpack = localPlayer:FindFirstChild("Backpack")
+    if backpack then
+        for _, tool in ipairs(backpack:GetChildren()) do
+            if tool:IsA("Tool") then
+                for _, desc in ipairs(tool:GetDescendants()) do
+                    if desc:IsA("Attachment") and string.lower(desc.Name):find("gunpoint") then
+                        return desc
+                    end
+                end
+            end
+        end
+    end
+    return nil
+end
+
+local function updateGunPoint()
+    local gp = findGunPoint()
+    if gp and gp ~= currentGunPoint then
+        currentGunPoint = gp
+    end
+    return gp
+end
+
+task.spawn(function()
+    while task.wait(2) do
+        pcall(updateGunPoint)
+    end
+end)
+character.ChildAdded:Connect(function(child)
+    if child:IsA("Tool") or child:IsA("Model") then
+        task.wait(0.1)
+        pcall(updateGunPoint)
+    end
+end)
+
+-- ==================== DRAWING ====================
+local LASER_COLOR = Color3.fromRGB(255, 255, 0)
+local laserLines = {}
+local crosshairParts = {}
+
+if hasDrawing then
+    pcall(function()
+        local function makeLine(thickness, transparency)
+            local line = Drawing.new("Line")
+            line.Thickness = thickness
+            line.Transparency = transparency
+            line.Color = LASER_COLOR
+            line.Visible = false
+            return line
+        end
+        local function makeCircle(radius, transparency)
+            local circle = Drawing.new("Circle")
+            circle.Radius = radius
+            circle.Thickness = 1
+            circle.Transparency = transparency
+            circle.Filled = true
+            circle.NumSides = 64
+            circle.Color = LASER_COLOR
+            circle.Visible = false
+            return circle
+        end
+        laserLines = {
+            makeLine(10, 0.12),
+            makeLine(5, 0.35),
+            makeLine(2, 0.7),
+            makeLine(1, 1)
+        }
+        crosshairParts = {
+            makeCircle(6, 0.12),
+            makeCircle(4, 0.35),
+            makeCircle(2.5, 0.75),
+            makeCircle(1, 1)
+        }
+    end)
+end
+
+local fovCircle = nil
+if hasDrawing and canHook then
+    pcall(function()
+        fovCircle = Drawing.new("Circle")
+        fovCircle.Thickness = 1
+        fovCircle.NumSides = 100
+        fovCircle.Radius = FOV
+        fovCircle.Filled = false
+        fovCircle.Visible = false
+        fovCircle.Transparency = 1
+        fovCircle.Color = FOV_COLOR
+    end)
+end
+
+local function setDrawingVisible(laserVis, crossVis)
+    for _, line in ipairs(laserLines) do line.Visible = laserVis end
+    for _, circle in ipairs(crosshairParts) do circle.Visible = crossVis end
+end
+
+local function setDrawingColor(color)
+    for _, line in ipairs(laserLines) do line.Color = color end
+    for _, circle in ipairs(crosshairParts) do circle.Color = color end
+end
+
+-- ==================== RAYCAST ====================
+local rayParams = RaycastParams.new()
+pcall(function()
+    rayParams.FilterType = Enum.RaycastFilterType.Exclude
+end)
+if character then
+    rayParams.FilterDescendantsInstances = {character}
+end
+rayParams.RespectCanCollide = true
+
+-- ==================== УТИЛИТЫ ====================
+local function getPlayerFromPart(part)
+    if not part then return nil end
+    local current = part
+    while current and current ~= Workspace and current ~= game do
+        if current:IsA("Model") then
+            if current ~= character then
+                if current:FindFirstChildOfClass("Humanoid") or Players:GetPlayerFromCharacter(current) then
+                    return current
+                end
+            else
+                return nil
+            end
+        end
+        current = current.Parent
+    end
+    return nil
+end
+
+local function worldToScreen(position)
+    local screenPos, onScreen, depth = camera:WorldToViewportPoint(position)
+    return Vector2.new(screenPos.X, screenPos.Y), onScreen, depth
+end
+
+local function getAimCenter()
+    return UserInput:GetMouseLocation()
+end
+
+-- ==================== WALLHACK (Highlight) ====================
+local highlights = {}
+
+local function isTargetVisible(targetChar)
+    local myChar = localPlayer.Character
+    if not myChar then return false end
+    local myRoot = myChar:FindFirstChild("HumanoidRootPart")
+    local targetRoot = targetChar:FindFirstChild("HumanoidRootPart")
+    if not myRoot or not targetRoot then return false end
+    local params = RaycastParams.new()
+    params.FilterType = Enum.RaycastFilterType.Exclude
+    params.FilterDescendantsInstances = {myChar, targetChar}
+    local result = Workspace:Raycast(myRoot.Position, targetRoot.Position - myRoot.Position, params)
+    return result == nil
+end
+
+local function createHighlight(targetPlayer)
+    if highlights[targetPlayer] then return end
+    local highlight = Instance.new("Highlight")
+    highlight.Name = "ESP_" .. targetPlayer.Name
+    highlight.FillColor = HIDDEN_COLOR
+    highlight.FillTransparency = 1
+    highlight.OutlineColor = HIDDEN_COLOR
+    highlight.OutlineTransparency = 0
+    highlight.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
+    highlight.Adornee = nil
+    highlight.Parent = CoreGui
+    highlights[targetPlayer] = highlight
+end
+
+local function removeHighlight(targetPlayer)
+    if highlights[targetPlayer] then
+        highlights[targetPlayer]:Destroy()
+        highlights[targetPlayer] = nil
+    end
+end
+
+for _, p in pairs(Players:GetPlayers()) do
+    if p ~= localPlayer then createHighlight(p) end
+end
+Players.PlayerAdded:Connect(function(p)
+    if p ~= localPlayer then createHighlight(p) end
+end)
+Players.PlayerRemoving:Connect(function(p)
+    removeHighlight(p)
+end)
+
+-- ==================== SILENT AIM ====================
+local targetPart = nil
+local lastTargetUpdate = 0
+local hookInstalled = false
+local originalRaycast = nil
+
+local function randomHit()
+    local chance = math.floor(hitChance)
+    local rnd = math.floor(math.random() * 100) / 100
+    return rnd <= (chance / 100)
+end
+
+local function argsMatch(args, config)
+    local count = 0
+    if #args < config.ArgCountRequired then return false end
+    for i, v in next, args do
+        if typeof(v) == config.Args[i] then
+            count = count + 1
+        end
+    end
+    return count >= config.ArgCountRequired
+end
+
+local function redirectDirection(origin, target)
+    return (target - origin).Unit * 1000
+end
+
+local RAYCAST_CONFIG = {
+    Raycast = {
+        ArgCountRequired = 3,
+        Args = {"Instance", "Vector3", "Vector3", "RaycastParams"}
+    }
+}
+
+local function installHook()
+    if not canHook or hookInstalled then return false end
+
+    if hasHookmetamethod then
+        hookInstalled = pcall(function()
+            originalRaycast = hookmetamethod(game, "__namecall", newcclosure(function(...)
+                local args = {...}
+                local self = args[1]
+                local method = getnamecallmethod()
+                local hit = randomHit()
+
+                if silentAimEnabled and not checkcaller() and self == Workspace and hit and method == "Raycast" and targetPart then
+                    if argsMatch(args, RAYCAST_CONFIG.Raycast) then
+                        local origin = args[2]
+                        args[3] = redirectDirection(origin, targetPart.Position)
+                        return originalRaycast(unpack(args))
+                    end
+                end
+                return originalRaycast(...)
+            end))
+        end)
+    end
+
+    if not hookInstalled and hasHookfunction then
+        hookInstalled = pcall(function()
+            originalRaycast = Workspace.Raycast
+            local newRaycast = newcclosure(function(self, origin, direction, params)
+                if silentAimEnabled and not checkcaller() and self == Workspace and targetPart then
+                    if argsMatch({self, origin, direction, params}, RAYCAST_CONFIG.Raycast) then
+                        return originalRaycast(self, origin, redirectDirection(origin, targetPart.Position), params)
+                    end
+                end
+                return originalRaycast(self, origin, direction, params)
+            end)
+            hookfunction(Workspace, "Raycast", newRaycast)
+        end)
+    end
+
+    if not hookInstalled and hasReplaceclosure then
+        hookInstalled = pcall(function()
+            originalRaycast = Workspace.Raycast
+            local newRaycast = newcclosure(function(self, origin, direction, params)
+                if silentAimEnabled and not checkcaller() and self == Workspace and targetPart then
+                    if argsMatch({self, origin, direction, params}, RAYCAST_CONFIG.Raycast) then
+                        return originalRaycast(self, origin, redirectDirection(origin, targetPart.Position), params)
+                    end
+                end
+                return originalRaycast(self, origin, direction, params)
+            end)
+            replaceclosure(Workspace.Raycast, newRaycast)
+        end)
+    end
+
+    return hookInstalled
+end
+
+local function updateTarget()
+    if not silentAimEnabled then
+        targetPart = nil
+        return
+    end
+    local now = os.clock()
+    if (now - lastTargetUpdate) < 0.1 then return end
+    lastTargetUpdate = now
+
+    local aimCenter = getAimCenter()
+    local closest = nil
+    local closestDist = FOV
+
+    for _, p in ipairs(Players:GetPlayers()) do
+        if p == localPlayer then continue end
+        local char = p.Character
+        if not char then continue end
+        local hum = char:FindFirstChildOfClass("Humanoid")
+        if not hum or hum.Health <= 0 then continue end
+        local part = char:FindFirstChild(TARGET_PART) or char:FindFirstChild("HumanoidRootPart")
+        if not part then continue end
+        local screenPos, onScreen = camera:WorldToViewportPoint(part.Position)
+        if not onScreen then continue end
+        local dist = (Vector2.new(screenPos.X, screenPos.Y) - aimCenter).Magnitude
+        if dist <= closestDist then
+            closestDist = dist
+            closest = part
+        end
+    end
+    targetPart = closest
+end
+
+-- ==================== UI ====================
+local function getGuiParent()
+    local ok, parent = pcall(function()
+        return (gethui and gethui()) or CoreGui
+    end)
+    if ok and parent then return parent end
+    return localPlayer:FindFirstChildOfClass("PlayerGui") or localPlayer:WaitForChild("PlayerGui")
+end
+
+-- Clean dark palette
+local C = {
+    PanelBg     = Color3.fromRGB(18, 18, 21),
+    HeaderBg    = Color3.fromRGB(24, 24, 28),
+    RowBg       = Color3.fromRGB(26, 26, 30),
+    RowHover    = Color3.fromRGB(36, 36, 42),
+    Stroke      = Color3.fromRGB(48, 48, 56),
+    RowStroke   = Color3.fromRGB(42, 42, 50),
+    Divider     = Color3.fromRGB(38, 38, 46),
+    Accent      = Color3.fromRGB(139, 92, 246),
+    AccentPink  = Color3.fromRGB(236, 72, 153),
+    Text        = Color3.fromRGB(238, 238, 242),
+    Subtext     = Color3.fromRGB(138, 138, 152),
+    Success     = Color3.fromRGB(34, 197, 94),
+    Off         = Color3.fromRGB(52, 52, 62),
+    BadgeBg     = Color3.fromRGB(36, 36, 42),
+}
+
+local screenGui = Instance.new("ScreenGui")
+screenGui.Name = "XZ_Overlay"
+screenGui.ResetOnSpawn = false
+screenGui.DisplayOrder = 99999
+screenGui.IgnoreGuiInset = true
+screenGui.Parent = getGuiParent()
+
+-- ===== World-space crosshair =====
+local crosshairFrame = Instance.new("Frame")
+crosshairFrame.Name = "Crosshair"
+crosshairFrame.Size = UDim2.new(0, 0, 0, 0)
+crosshairFrame.BackgroundTransparency = 1
+crosshairFrame.Visible = false
+crosshairFrame.ZIndex = 500
+crosshairFrame.Parent = screenGui
+
+local crosshairLines = {}
+local function createCrossLine(x, y, w, h)
+    local shadow = Instance.new("Frame")
+    shadow.Size = UDim2.new(0, w + 2, 0, h + 2)
+    shadow.Position = UDim2.new(0, x - 1, 0, y - 1)
+    shadow.BackgroundColor3 = Color3.new(0, 0, 0)
+    shadow.BorderSizePixel = 0
+    shadow.ZIndex = 501
+    shadow.Parent = crosshairFrame
+    local line = Instance.new("Frame")
+    line.Size = UDim2.new(0, w, 0, h)
+    line.Position = UDim2.new(0, x, 0, y)
+    line.BackgroundColor3 = Color3.fromRGB(255, 255, 0)
+    line.BorderSizePixel = 0
+    line.ZIndex = 502
+    line.Parent = crosshairFrame
+    table.insert(crosshairLines, line)
+end
+createCrossLine(-1, -8, 2, 16)
+createCrossLine(-8, -1, 16, 2)
+
+local function setCrosshairColor(color)
+    for _, line in ipairs(crosshairLines) do
+        line.BackgroundColor3 = color
+    end
+end
+
+local function hideAll()
+    setDrawingVisible(false, false)
+    crosshairFrame.Visible = false
+end
+
+-- ===== Main panel =====
+local EXPANDED_H  = 388
+local COLLAPSED_H = 46
+local panelWidth  = 330
+
+local panel = Instance.new("Frame")
+panel.Name = "OverlayPanel"
+panel.Size = UDim2.new(0, panelWidth, 0, EXPANDED_H)
+panel.AnchorPoint = Vector2.new(1, 0)
+panel.Position = UDim2.new(1, -20, 0, 60)
+panel.BackgroundColor3 = C.PanelBg
+panel.BorderSizePixel = 0
+panel.Active = true
+panel.ClipsDescendants = true
+panel.Parent = screenGui
+
+local pCorner = Instance.new("UICorner")
+pCorner.CornerRadius = UDim.new(0, 14)
+pCorner.Parent = panel
+
+local pStroke = Instance.new("UIStroke")
+pStroke.Thickness = 1
+pStroke.Color = C.Stroke
+pStroke.Transparency = 0.15
+pStroke.Parent = panel
+
+-- ===== Header =====
+local header = Instance.new("Frame")
+header.Name = "Header"
+header.Size = UDim2.new(1, 0, 0, 46)
+header.BackgroundColor3 = C.HeaderBg
+header.BorderSizePixel = 0
+header.Parent = panel
+local headerCorner = Instance.new("UICorner")
+headerCorner.CornerRadius = UDim.new(0, 14)
+headerCorner.Parent = header
+
+-- mask the bottom rounding of the header so it sits flat against body
+local headerMask = Instance.new("Frame")
+headerMask.Size = UDim2.new(1, 0, 0, 14)
+headerMask.Position = UDim2.new(0, 0, 1, -14)
+headerMask.BackgroundColor3 = C.HeaderBg
+headerMask.BorderSizePixel = 0
+headerMask.Parent = header
+
+local headerDivider = Instance.new("Frame")
+headerDivider.Size = UDim2.new(1, 0, 0, 1)
+headerDivider.Position = UDim2.new(0, 0, 1, -1)
+headerDivider.BackgroundColor3 = C.Divider
+headerDivider.BorderSizePixel = 0
+headerDivider.Parent = header
+
+local accentBar = Instance.new("Frame")
+accentBar.Size = UDim2.new(0, 3, 0, 22)
+accentBar.Position = UDim2.new(0, 14, 0.5, 0)
+accentBar.AnchorPoint = Vector2.new(0, 0.5)
+accentBar.BackgroundColor3 = C.Accent
+accentBar.BorderSizePixel = 0
+accentBar.Parent = header
+local abC = Instance.new("UICorner")
+abC.CornerRadius = UDim.new(1, 0)
+abC.Parent = accentBar
+local abG = Instance.new("UIGradient")
+abG.Color = ColorSequence.new(C.Accent, C.AccentPink)
+abG.Rotation = 90
+abG.Parent = accentBar
+
+local title = Instance.new("TextLabel")
+title.Size = UDim2.new(1, -120, 1, 0)
+title.Position = UDim2.new(0, 26, 0, 0)
+title.BackgroundTransparency = 1
+title.Text = "XZ'S TUFF QUICKDRAW SCRIPT"
+title.TextColor3 = C.Text
+title.Font = Enum.Font.GothamBold
+title.TextSize = 11
+title.TextXAlignment = Enum.TextXAlignment.Left
+title.Parent = header
+
+local statusDot = Instance.new("Frame")
+statusDot.Size = UDim2.new(0, 6, 0, 6)
+statusDot.Position = UDim2.new(1, -76, 0.5, 0)
+statusDot.AnchorPoint = Vector2.new(0.5, 0.5)
+statusDot.BackgroundColor3 = C.Success
+statusDot.BorderSizePixel = 0
+statusDot.Parent = header
+local sdC = Instance.new("UICorner")
+sdC.CornerRadius = UDim.new(1, 0)
+sdC.Parent = statusDot
+
+task.spawn(function()
+    while statusDot.Parent do
+        TweenService:Create(statusDot, TweenInfo.new(1.2, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 0.6}):Play()
+        task.wait(1.2)
+        TweenService:Create(statusDot, TweenInfo.new(1.2, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {BackgroundTransparency = 0}):Play()
+        task.wait(1.2)
+    end
+end)
+
+local minimizeBtn = Instance.new("TextButton")
+minimizeBtn.Size = UDim2.new(0, 24, 0, 24)
+minimizeBtn.Position = UDim2.new(1, -38, 0.5, 0)
+minimizeBtn.AnchorPoint = Vector2.new(0, 0.5)
+minimizeBtn.BackgroundColor3 = Color3.fromRGB(34, 34, 40)
+minimizeBtn.BorderSizePixel = 0
+minimizeBtn.Text = "–"
+minimizeBtn.TextColor3 = C.Text
+minimizeBtn.Font = Enum.Font.GothamBold
+minimizeBtn.TextSize = 16
+minimizeBtn.AutoButtonColor = false
+minimizeBtn.Parent = header
+local mbC = Instance.new("UICorner")
+mbC.CornerRadius = UDim.new(0, 6)
+mbC.Parent = minimizeBtn
+
+minimizeBtn.MouseEnter:Connect(function()
+    TweenService:Create(minimizeBtn, TweenInfo.new(0.15), {BackgroundColor3 = Color3.fromRGB(50, 50, 60)}):Play()
+end)
+minimizeBtn.MouseLeave:Connect(function()
+    TweenService:Create(minimizeBtn, TweenInfo.new(0.15), {BackgroundColor3 = Color3.fromRGB(34, 34, 40)}):Play()
+end)
+
+-- ===== Body =====
+local body = Instance.new("Frame")
+body.Name = "Body"
+body.Size = UDim2.new(1, 0, 1, -46)
+body.Position = UDim2.new(0, 0, 0, 46)
+body.BackgroundTransparency = 1
+body.Parent = panel
+
+local function makeSectionLabel(parent, y, text)
+    local dot = Instance.new("Frame")
+    dot.Size = UDim2.new(0, 4, 0, 4)
+    dot.Position = UDim2.new(0, 14, 0, y + 5)
+    dot.AnchorPoint = Vector2.new(0, 0.5)
+    dot.BackgroundColor3 = C.Accent
+    dot.BorderSizePixel = 0
+    dot.Parent = parent
+    local dc = Instance.new("UICorner")
+    dc.CornerRadius = UDim.new(1, 0)
+    dc.Parent = dot
+
+    local lbl = Instance.new("TextLabel")
+    lbl.Size = UDim2.new(1, -24, 0, 14)
+    lbl.Position = UDim2.new(0, 26, 0, y)
+    lbl.BackgroundTransparency = 1
+    lbl.Text = text
+    lbl.TextColor3 = C.Subtext
+    lbl.Font = Enum.Font.GothamBold
+    lbl.TextSize = 10
+    lbl.TextXAlignment = Enum.TextXAlignment.Left
+    lbl.Parent = parent
+    return lbl
+end
+
+local function makeDivider(parent, y)
+    local div = Instance.new("Frame")
+    div.Size = UDim2.new(1, -24, 0, 1)
+    div.Position = UDim2.new(0, 12, 0, y)
+    div.BackgroundColor3 = C.Divider
+    div.BorderSizePixel = 0
+    div.Parent = parent
+end
+
+-- Toggle switch
+local toggles = {}
+
+local function makeSwitch(parent)
+    local track = Instance.new("Frame")
+    track.Size = UDim2.new(0, 36, 0, 18)
+    track.BackgroundColor3 = C.Off
+    track.BorderSizePixel = 0
+    track.Parent = parent
+    local tc = Instance.new("UICorner")
+    tc.CornerRadius = UDim.new(1, 0)
+    tc.Parent = track
+
+    local knob = Instance.new("Frame")
+    knob.Size = UDim2.new(0, 14, 0, 14)
+    knob.Position = UDim2.new(0, 9, 0.5, 0)
+    knob.AnchorPoint = Vector2.new(0.5, 0.5)
+    knob.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    knob.BorderSizePixel = 0
+    knob.Parent = track
+    local kc = Instance.new("UICorner")
+    kc.CornerRadius = UDim.new(1, 0)
+    kc.Parent = knob
+
+    return {track = track, knob = knob}
+end
+
+local function setToggleState(name, state)
+    local t = toggles[name]
+    if not t then return end
+    TweenService:Create(t.knob, TweenInfo.new(0.18, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+        Position = state and UDim2.new(0, 27, 0.5, 0) or UDim2.new(0, 9, 0.5, 0)
+    }):Play()
+    TweenService:Create(t.track, TweenInfo.new(0.18, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+        BackgroundColor3 = state and C.Success or C.Off
+    }):Play()
+    if t.indicator then
+        TweenService:Create(t.indicator, TweenInfo.new(0.18), {
+            BackgroundColor3 = state and C.Success or C.Off,
+            BackgroundTransparency = state and 0 or 0.4
+        }):Play()
+    end
+end
+
+local function makeToggleRow(parent, y, labelText, keyText, toggleName)
+    local row = Instance.new("TextButton")
+    row.Size = UDim2.new(1, -20, 0, 28)
+    row.Position = UDim2.new(0, 10, 0, y)
+    row.BackgroundColor3 = C.RowBg
+    row.BorderSizePixel = 0
+    row.Text = ""
+    row.AutoButtonColor = false
+    row.Parent = parent
+    local rc = Instance.new("UICorner")
+    rc.CornerRadius = UDim.new(0, 8)
+    rc.Parent = row
+    local rs = Instance.new("UIStroke")
+    rs.Thickness = 1
+    rs.Color = C.RowStroke
+    rs.Transparency = 0.4
+    rs.Parent = row
+
+    -- left accent indicator bar
+    local indicator = Instance.new("Frame")
+    indicator.Size = UDim2.new(0, 2, 0, 14)
+    indicator.Position = UDim2.new(0, 0, 0.5, 0)
+    indicator.AnchorPoint = Vector2.new(0, 0.5)
+    indicator.BackgroundColor3 = C.Off
+    indicator.BackgroundTransparency = 0.4
+    indicator.BorderSizePixel = 0
+    indicator.Parent = row
+    local ic = Instance.new("UICorner")
+    ic.CornerRadius = UDim.new(1, 0)
+    ic.Parent = indicator
+
+    local label = Instance.new("TextLabel")
+    label.Size = UDim2.new(1, -130, 1, 0)
+    label.Position = UDim2.new(0, 14, 0, 0)
+    label.BackgroundTransparency = 1
+    label.Text = labelText
+    label.TextColor3 = C.Text
+    label.Font = Enum.Font.GothamMedium
+    label.TextSize = 12
+    label.TextXAlignment = Enum.TextXAlignment.Left
+    label.Parent = row
+
+    if keyText then
+        local badgeWidth = math.max(22, #keyText * 7 + 12)
+        local badge = Instance.new("TextLabel")
+        badge.Size = UDim2.new(0, badgeWidth, 0, 16)
+        badge.Position = UDim2.new(1, -badgeWidth - 58, 0.5, 0)
+        badge.AnchorPoint = Vector2.new(0, 0.5)
+        badge.BackgroundColor3 = C.BadgeBg
+        badge.BorderSizePixel = 0
+        badge.Text = keyText
+        badge.TextColor3 = C.Subtext
+        badge.Font = Enum.Font.GothamBold
+        badge.TextSize = 9
+        badge.Parent = row
+        local bc = Instance.new("UICorner")
+        bc.CornerRadius = UDim.new(0, 4)
+        bc.Parent = badge
+        local bs = Instance.new("UIStroke")
+        bs.Thickness = 1
+        bs.Color = C.Stroke
+        bs.Transparency = 0.4
+        bs.Parent = badge
+    end
+
+    local sw = makeSwitch(row)
+    sw.track.Position = UDim2.new(1, -12, 0.5, 0)
+    sw.track.AnchorPoint = Vector2.new(1, 0.5)
+    sw.indicator = indicator
+    toggles[toggleName] = sw
+
+    row.MouseEnter:Connect(function()
+        TweenService:Create(row, TweenInfo.new(0.12), {BackgroundColor3 = C.RowHover}):Play()
+    end)
+    row.MouseLeave:Connect(function()
+        TweenService:Create(row, TweenInfo.new(0.12), {BackgroundColor3 = C.RowBg}):Play()
+    end)
+
+    return row, label
+end
+
+-- ===== COMBAT SECTION =====
+makeSectionLabel(body, 12, "COMBAT")
+
+local silentRow, silentLabel = makeToggleRow(body, 32, "Silent Aim", "B", "silentAim")
+local triggerRow           = makeToggleRow(body, 64, "Winchester Triggerbot", "V", "triggerbot")
+
+-- Target selector row
+local targetRow = Instance.new("TextButton")
+targetRow.Size = UDim2.new(1, -20, 0, 28)
+targetRow.Position = UDim2.new(0, 10, 0, 96)
+targetRow.BackgroundColor3 = C.RowBg
+targetRow.BorderSizePixel = 0
+targetRow.Text = ""
+targetRow.AutoButtonColor = false
+targetRow.Parent = body
+local trC = Instance.new("UICorner")
+trC.CornerRadius = UDim.new(0, 8)
+trC.Parent = targetRow
+local trS = Instance.new("UIStroke")
+trS.Thickness = 1
+trS.Color = C.RowStroke
+trS.Transparency = 0.4
+trS.Parent = targetRow
+
+local targetIndicator = Instance.new("Frame")
+targetIndicator.Size = UDim2.new(0, 2, 0, 14)
+targetIndicator.Position = UDim2.new(0, 0, 0.5, 0)
+targetIndicator.AnchorPoint = Vector2.new(0, 0.5)
+targetIndicator.BackgroundColor3 = C.Accent
+targetIndicator.BorderSizePixel = 0
+targetIndicator.Parent = targetRow
+local tiC = Instance.new("UICorner")
+tiC.CornerRadius = UDim.new(1, 0)
+tiC.Parent = targetIndicator
+
+local targetLabelTxt = Instance.new("TextLabel")
+targetLabelTxt.Size = UDim2.new(1, -130, 1, 0)
+targetLabelTxt.Position = UDim2.new(0, 14, 0, 0)
+targetLabelTxt.BackgroundTransparency = 1
+targetLabelTxt.Text = "Target"
+targetLabelTxt.TextColor3 = C.Text
+targetLabelTxt.Font = Enum.Font.GothamMedium
+targetLabelTxt.TextSize = 12
+targetLabelTxt.TextXAlignment = Enum.TextXAlignment.Left
+targetLabelTxt.Parent = targetRow
+
+local targetValue = Instance.new("TextLabel")
+targetValue.Size = UDim2.new(0, 52, 0, 18)
+targetValue.Position = UDim2.new(1, -88, 0.5, 0)
+targetValue.AnchorPoint = Vector2.new(0, 0.5)
+targetValue.BackgroundColor3 = C.Accent
+targetValue.BorderSizePixel = 0
+targetValue.Text = "HEAD"
+targetValue.TextColor3 = Color3.new(1, 1, 1)
+targetValue.Font = Enum.Font.GothamBold
+targetValue.TextSize = 10
+targetValue.Parent = targetRow
+local tvC = Instance.new("UICorner")
+tvC.CornerRadius = UDim.new(0, 4)
+tvC.Parent = targetValue
+local tvG = Instance.new("UIGradient")
+tvG.Color = ColorSequence.new(C.Accent, C.AccentPink)
+tvG.Rotation = 45
+tvG.Parent = targetValue
+
+local targetKey = Instance.new("TextLabel")
+targetKey.Size = UDim2.new(0, 22, 0, 16)
+targetKey.Position = UDim2.new(1, -30, 0.5, 0)
+targetKey.AnchorPoint = Vector2.new(0, 0.5)
+targetKey.BackgroundColor3 = C.BadgeBg
+targetKey.BorderSizePixel = 0
+targetKey.Text = "F"
+targetKey.TextColor3 = C.Subtext
+targetKey.Font = Enum.Font.GothamBold
+targetKey.TextSize = 9
+targetKey.Parent = targetRow
+local tkC = Instance.new("UICorner")
+tkC.CornerRadius = UDim.new(0, 4)
+tkC.Parent = targetKey
+local tkS = Instance.new("UIStroke")
+tkS.Thickness = 1
+tkS.Color = C.Stroke
+tkS.Transparency = 0.4
+tkS.Parent = targetKey
+
+targetRow.MouseEnter:Connect(function()
+    TweenService:Create(targetRow, TweenInfo.new(0.12), {BackgroundColor3 = C.RowHover}):Play()
+end)
+targetRow.MouseLeave:Connect(function()
+    TweenService:Create(targetRow, TweenInfo.new(0.12), {BackgroundColor3 = C.RowBg}):Play()
+end)
+
+-- ===== VISUALS SECTION =====
+makeDivider(body, 134)
+makeSectionLabel(body, 146, "VISUALS")
+
+local wallhackRow  = makeToggleRow(body, 166, "Wallhack", "CAPS", "wallhack")
+local fovRow       = makeToggleRow(body, 198, "FOV Circle", "H", "fov")
+
+-- FOV slider row
+local fovSliderRow = Instance.new("Frame")
+fovSliderRow.Size = UDim2.new(1, -20, 0, 28)
+fovSliderRow.Position = UDim2.new(0, 10, 0, 230)
+fovSliderRow.BackgroundColor3 = C.RowBg
+fovSliderRow.BorderSizePixel = 0
+fovSliderRow.Parent = body
+local fsrC = Instance.new("UICorner")
+fsrC.CornerRadius = UDim.new(0, 8)
+fsrC.Parent = fovSliderRow
+local fsrS = Instance.new("UIStroke")
+fsrS.Thickness = 1
+fsrS.Color = C.RowStroke
+fsrS.Transparency = 0.4
+fsrS.Parent = fovSliderRow
+
+local fovSliderIndicator = Instance.new("Frame")
+fovSliderIndicator.Size = UDim2.new(0, 2, 0, 14)
+fovSliderIndicator.Position = UDim2.new(0, 0, 0.5, 0)
+fovSliderIndicator.AnchorPoint = Vector2.new(0, 0.5)
+fovSliderIndicator.BackgroundColor3 = C.Accent
+fovSliderIndicator.BorderSizePixel = 0
+fovSliderIndicator.Parent = fovSliderRow
+local fsiC = Instance.new("UICorner")
+fsiC.CornerRadius = UDim.new(1, 0)
+fsiC.Parent = fovSliderIndicator
+
+local fovSliderLabel = Instance.new("TextLabel")
+fovSliderLabel.Size = UDim2.new(1, -150, 1, 0)
+fovSliderLabel.Position = UDim2.new(0, 14, 0, 0)
+fovSliderLabel.BackgroundTransparency = 1
+fovSliderLabel.Text = "FOV Radius"
+fovSliderLabel.TextColor3 = C.Text
+fovSliderLabel.Font = Enum.Font.GothamMedium
+fovSliderLabel.TextSize = 12
+fovSliderLabel.TextXAlignment = Enum.TextXAlignment.Left
+fovSliderLabel.Parent = fovSliderRow
+
+local fovMinusBtn = Instance.new("TextButton")
+fovMinusBtn.Size = UDim2.new(0, 22, 0, 20)
+fovMinusBtn.Position = UDim2.new(1, -110, 0.5, 0)
+fovMinusBtn.AnchorPoint = Vector2.new(0, 0.5)
+fovMinusBtn.BackgroundColor3 = C.BadgeBg
+fovMinusBtn.BorderSizePixel = 0
+fovMinusBtn.Text = "−"
+fovMinusBtn.TextColor3 = C.Text
+fovMinusBtn.Font = Enum.Font.GothamBold
+fovMinusBtn.TextSize = 14
+fovMinusBtn.AutoButtonColor = false
+fovMinusBtn.Parent = fovSliderRow
+local fmC = Instance.new("UICorner")
+fmC.CornerRadius = UDim.new(0, 4)
+fmC.Parent = fovMinusBtn
+
+local fovLabel = Instance.new("TextLabel")
+fovLabel.Size = UDim2.new(0, 40, 0, 20)
+fovLabel.Position = UDim2.new(1, -84, 0.5, 0)
+fovLabel.AnchorPoint = Vector2.new(0, 0.5)
+fovLabel.BackgroundColor3 = C.BadgeBg
+fovLabel.BorderSizePixel = 0
+fovLabel.Text = tostring(FOV)
+fovLabel.TextColor3 = C.Accent
+fovLabel.Font = Enum.Font.GothamBold
+fovLabel.TextSize = 11
+fovLabel.Parent = fovSliderRow
+local flC = Instance.new("UICorner")
+flC.CornerRadius = UDim.new(0, 4)
+flC.Parent = fovLabel
+
+local fovPlusBtn = Instance.new("TextButton")
+fovPlusBtn.Size = UDim2.new(0, 22, 0, 20)
+fovPlusBtn.Position = UDim2.new(1, -40, 0.5, 0)
+fovPlusBtn.AnchorPoint = Vector2.new(0, 0.5)
+fovPlusBtn.BackgroundColor3 = C.BadgeBg
+fovPlusBtn.BorderSizePixel = 0
+fovPlusBtn.Text = "+"
+fovPlusBtn.TextColor3 = C.Text
+fovPlusBtn.Font = Enum.Font.GothamBold
+fovPlusBtn.TextSize = 14
+fovPlusBtn.AutoButtonColor = false
+fovPlusBtn.Parent = fovSliderRow
+local fpC = Instance.new("UICorner")
+fpC.CornerRadius = UDim.new(0, 4)
+fpC.Parent = fovPlusBtn
+
+for _, btn in ipairs({fovMinusBtn, fovPlusBtn}) do
+    btn.MouseEnter:Connect(function()
+        TweenService:Create(btn, TweenInfo.new(0.12), {BackgroundColor3 = C.RowHover}):Play()
+    end)
+    btn.MouseLeave:Connect(function()
+        TweenService:Create(btn, TweenInfo.new(0.12), {BackgroundColor3 = C.BadgeBg}):Play()
+    end)
+end
+
+local laserRow     = makeToggleRow(body, 262, "Laser", "X", "laser")
+local crosshairRow = makeToggleRow(body, 294, "Crosshair", "C", "crosshair")
+
+-- ==================== ОБНОВЛЕНИЕ UI ====================
+local function updateUI()
+    setToggleState("wallhack", WALLHACK_ENABLED)
+    setToggleState("silentAim", silentAimEnabled)
+    setToggleState("fov", fovCircleEnabled)
+    setToggleState("laser", laserEnabled)
+    setToggleState("crosshair", crosshairEnabled)
+    setToggleState("triggerbot", triggerbotEnabled)
+
+    if targetValue then
+        targetValue.Text = TARGET_NAMES[TARGET_PART]
+    end
+    if fovLabel then
+        fovLabel.Text = tostring(FOV)
+    end
+    if silentLabel then
+        if not canHook then
+            silentLabel.Text = "Silent Aim (N/A)"
+            silentLabel.TextColor3 = C.Subtext
+        else
+            silentLabel.Text = "Silent Aim"
+            silentLabel.TextColor3 = C.Text
+        end
+    end
+end
+
+updateUI()
+
+-- ==================== ОБРАБОТЧИКИ ====================
+local function toggleWallhack()
+    WALLHACK_ENABLED = not WALLHACK_ENABLED
+    for _, h in pairs(highlights) do
+        h.Enabled = WALLHACK_ENABLED
+    end
+    updateUI()
+end
+
+local function toggleSilentAim()
+    if not canHook then updateUI(); return end
+    if not silentAimEnabled then
+        if not hookInstalled then
+            if not installHook() then
+                canHook = false
+                updateUI()
+                return
+            end
+        end
+        silentAimEnabled = true
+    else
+        silentAimEnabled = false
+    end
+    updateUI()
+end
+
+local function toggleFov()
+    fovCircleEnabled = not fovCircleEnabled
+    updateUI()
+end
+
+local function switchTarget()
+    targetIndex = (targetIndex % #TARGET_PARTS) + 1
+    TARGET_PART = TARGET_PARTS[targetIndex]
+    updateUI()
+end
+
+local function decreaseFov()
+    FOV = math.max(20, FOV - 5)
+    if fovCircle then fovCircle.Radius = FOV end
+    updateUI()
+end
+
+local function increaseFov()
+    FOV = math.min(600, FOV + 5)
+    if fovCircle then fovCircle.Radius = FOV end
+    updateUI()
+end
+
+local function toggleLaser()
+    laserEnabled = not laserEnabled
+    if not laserEnabled then setDrawingVisible(false, crosshairEnabled) end
+    updateUI()
+end
+
+local function toggleCrosshair()
+    crosshairEnabled = not crosshairEnabled
+    if not crosshairEnabled then crosshairFrame.Visible = false end
+    updateUI()
+end
+
+local function toggleTriggerbot()
+    triggerbotEnabled = not triggerbotEnabled
+    updateUI()
+end
+
+local minimized = false
+local function toggleMinimize()
+    minimized = not minimized
+    local targetH = minimized and COLLAPSED_H or EXPANDED_H
+    TweenService:Create(panel, TweenInfo.new(0.25, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+        Size = UDim2.new(0, panelWidth, 0, targetH)
+    }):Play()
+    minimizeBtn.Text = minimized and "+" or "–"
+end
+
+silentRow.Activated:Connect(toggleSilentAim)
+triggerRow.Activated:Connect(toggleTriggerbot)
+targetRow.Activated:Connect(switchTarget)
+wallhackRow.Activated:Connect(toggleWallhack)
+fovRow.Activated:Connect(toggleFov)
+fovMinusBtn.Activated:Connect(decreaseFov)
+fovPlusBtn.Activated:Connect(increaseFov)
+laserRow.Activated:Connect(toggleLaser)
+crosshairRow.Activated:Connect(toggleCrosshair)
+minimizeBtn.Activated:Connect(toggleMinimize)
+
+-- Dragging (header only)
+local dragging = false
+local dragStart, startPos
+
+header.InputBegan:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+        dragging = true
+        dragStart = input.Position
+        startPos = panel.Position
+        input.Changed:Connect(function()
+            if input.UserInputState == Enum.UserInputState.End then
+                dragging = false
+            end
+        end)
+    end
+end)
+
+UserInput.InputChanged:Connect(function(input)
+    if dragging and (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
+        local delta = input.Position - dragStart
+        panel.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+    end
+end)
+
+-- ==================== СМЕРТЬ / РЕСПАВН ====================
+local function onDeath()
+    hideAll()
+    currentGunPoint = nil
+    targetPart = nil
+    updateUI()
+end
+
+localPlayer.CharacterAdded:Connect(function(char)
+    character = char
+    hideAll()
+    currentGunPoint = nil
+    targetPart = nil
+    task.wait(0.5)
+    rayParams.FilterDescendantsInstances = {character}
+    camera = Workspace.CurrentCamera
+    updateGunPoint()
+    updateUI()
+    local hum = char:WaitForChild("Humanoid", 5) or char:FindFirstChildOfClass("Humanoid")
+    if hum then hum.Died:Connect(onDeath) end
+    char.ChildAdded:Connect(function(child)
+        if child:IsA("Tool") or child:IsA("Model") then
+            task.wait(0.1)
+            pcall(updateGunPoint)
+        end
+    end)
+end)
+
+if character then
+    local hum = character:FindFirstChildOfClass("Humanoid")
+    if hum then hum.Died:Connect(onDeath) end
+end
+
+-- ==================== ОСНОВНОЙ ЦИКЛ ====================
+local triggerLastClick = 0
+local triggerLastFire = 0
+
+RunService.RenderStepped:Connect(function()
+    if WALLHACK_ENABLED then
+        for targetPlayer, highlight in pairs(highlights) do
+            local char = targetPlayer.Character
+            local root = char and char:FindFirstChild("HumanoidRootPart")
+            local hum = char and char:FindFirstChildOfClass("Humanoid")
+            if not (char and root and hum and hum.Health > 0) then
+                highlight.Enabled = false
+                continue
+            end
+            highlight.Adornee = char
+            highlight.Enabled = true
+            local visible = isTargetVisible(char)
+            local color = visible and VISIBLE_COLOR or HIDDEN_COLOR
+            highlight.FillColor = color
+            highlight.OutlineColor = color
+        end
+    end
+
+    local ok = pcall(function()
+        if silentAimEnabled and fovCircleEnabled and fovCircle then
+            fovCircle.Position = getAimCenter()
+            fovCircle.Color = FOV_COLOR
+            fovCircle.Visible = true
+        elseif fovCircle then
+            fovCircle.Visible = false
+        end
+
+        if silentAimEnabled then
+            updateTarget()
+        else
+            targetPart = nil
+        end
+
+        if not laserEnabled and not crosshairEnabled and not triggerbotEnabled then
+            if not crosshairEnabled then crosshairFrame.Visible = false end
+            return
+        end
+
+        local gp = updateGunPoint() or currentGunPoint
+        if not gp or not gp.Parent then
+            setDrawingVisible(false, false)
+            crosshairFrame.Visible = false
+            return
+        end
+
+        local origin = gp.WorldPosition
+        local dir = gp.WorldCFrame.LookVector
+        local hit = Workspace:Raycast(origin, dir * 5000, rayParams)
+        local targetPos = (hit and hit.Position) or (origin + dir * 5000)
+
+        local screenFrom = worldToScreen(origin)
+        local screenTo, onScreen = worldToScreen(targetPos)
+
+        local color = Color3.fromRGB(255, 150, 0)
+        if hit and hit.Instance then
+            local hitPlayer = getPlayerFromPart(hit.Instance)
+            if hitPlayer then
+                color = Color3.fromRGB(0, 255, 0)
+            else
+                color = Color3.fromRGB(255, 50, 50)
+            end
+        end
+
+        if crosshairEnabled and onScreen then
+            crosshairFrame.Position = UDim2.new(0, math.floor(screenTo.X), 0, math.floor(screenTo.Y))
+            crosshairFrame.Visible = true
+            setCrosshairColor(color)
+        else
+            crosshairFrame.Visible = false
+        end
+
+        if laserEnabled then
+            setDrawingColor(color)
+            for _, line in ipairs(laserLines) do
+                line.From = screenFrom
+                line.To = screenTo
+                line.Visible = true
+            end
+        else
+            for _, line in ipairs(laserLines) do line.Visible = false end
+        end
+
+        if triggerbotEnabled and hit and hit.Instance then
+            local hitPlayer = getPlayerFromPart(hit.Instance)
+            if hitPlayer then
+                local hum = hitPlayer:FindFirstChildOfClass("Humanoid")
+                if hum and hum.Health > 0 then
+                    local now = os.clock()
+                    if (now - triggerLastClick) >= 0.1 and (now - triggerLastFire) >= 0.075 then
+                        triggerLastClick = now
+                        VirtualInput:SendMouseButtonEvent(0, 0, 0, true, game, 0)
+                        task.delay(0.05, function()
+                            VirtualInput:SendMouseButtonEvent(0, 0, 0, false, game, 0)
+                        end)
+                        triggerLastFire = nil
+                    end
+                end
+            end
+        end
+    end)
+
+    if not ok then
+        pcall(setDrawingVisible, false, false)
+        if crosshairFrame then crosshairFrame.Visible = false end
+    end
+end)
+
+-- ==================== ХОТКЕИ ====================
+UserInput.InputBegan:Connect(function(input, gp)
+    if gp then return end
+
+    if input.KeyCode == Enum.KeyCode.B then toggleSilentAim()
+    elseif input.KeyCode == Enum.KeyCode.H then toggleFov()
+    elseif input.KeyCode == Enum.KeyCode.F then switchTarget()
+    elseif input.KeyCode == Enum.KeyCode.X then toggleLaser()
+    elseif input.KeyCode == Enum.KeyCode.C then toggleCrosshair()
+    elseif input.KeyCode == Enum.KeyCode.V or input.UserInputType == Enum.UserInputType.MouseButton3 then toggleTriggerbot()
+    elseif input.KeyCode == Enum.KeyCode.CapsLock then toggleWallhack()
+    elseif input.KeyCode == Enum.KeyCode.End then
+        silentAimEnabled = false
+        laserEnabled = false
+        crosshairEnabled = false
+        triggerbotEnabled = false
+        WALLHACK_ENABLED = false
+        for _, h in pairs(highlights) do h.Enabled = false end
+        hideAll()
+        updateUI()
+        print("[SelfDestruct] Всё выключено")
+    end
+end)
+
+print("[XZ'S TUFF QUICKDRAW SCRIPT] Загружен.")
+print("B — Silent Aim, H — FOV, F — Head/Body, CapsLock — Wallhack")
+print("X — Laser, C — Crosshair, V — Winchester Triggerbot, END — Self-Destruct")
